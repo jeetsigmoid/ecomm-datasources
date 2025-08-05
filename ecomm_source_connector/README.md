@@ -15,7 +15,7 @@ This project gives a ready-made framework to fetch sales data and Ads Performanc
 ## 📁 Project Structure
 
 ```
-.└── ecomm_source_connector
+└── ecomm_source_connector
     ├── dist
     │   ├── ecomm_source_connector-0.1.0-py3-none-any.whl
     │   └── ecomm_source_connector-0.1.0.tar.gz
@@ -32,12 +32,12 @@ This project gives a ready-made framework to fetch sales data and Ads Performanc
         ├── amazon_ads
         │   ├── __init__.py
         │   ├── amazon_ads_main.py
-        │   ├── amc
-        │   │   ├── __init__.py
-        │   │   ├── amc_main.py
-        │   │   ├── avc
-        │   │   └── ecommerce_amazon_amc_ecs.py
         │   └── ecommerce_amzon_ads_ecs.py
+        ├── amc
+        │   ├── __init__.py
+        │   ├── amc_main.py
+        │   └── ecommerce_amazon_amc_ecs.py
+        ├── avc
         ├── config
         │   └── amc_config
         │       ├── campaign_LTV.yml
@@ -51,6 +51,11 @@ This project gives a ready-made framework to fetch sales data and Ads Performanc
         │   ├── SOURCES.txt
         │   └── top_level.txt
         ├── instacart
+        ├── utils
+        │   ├── __init__.py
+        │   ├── common_utils.py
+        │   ├── config_manager.py
+        │   └── report_processor.py
         └── walmart
 ...
 ## 🛠️ Features
@@ -77,10 +82,13 @@ This project gives a ready-made framework to fetch sales data and Ads Performanc
    git clone <repository-url>
    cd ecomm_source_connector
    ```
-
-2. **Install dependencies**
+2. **Setup Git Parameters**
    ```bash
-   pip install ecomm_source_connector
+   ```
+
+3. **Install dependencies**
+   ```bash
+   pip install ecomm_source_connector-0.1.0-py3-none-any.whl
    ```
 
 3. **Configure environment variables**
@@ -94,49 +102,21 @@ This project gives a ready-made framework to fetch sales data and Ads Performanc
 ## 🚀 Usage
 
 ### 1. Amazon Ads Data Extraction
-Run the main RPA workflow to extract SAP data:
+Run the amazon_ads_main.py to extract amazon ads related reports:
 
 ```bash
-python src/rpa/rpa.py
+python src/amazon_ads/amazon_ads_main.py
 ```
 
-### 2. LLM-Powered Analysis
-Execute intelligent data analysis:
+### 2. AMC Data Extraction
+Run the amazon_ads_main.py to extract amazon ads related reports:
 
 ```bash
-python sql_lite_agent_v3.py
+python src/amc/amc_main.py
 ```
-
-### 3. Generate Reports with LLM Tools
-Create visualizations and PDF reports:
-
-```bash
-python llm_tool_integration.py
-```
-
-##  Analysis Capabilities
-
-The system provides automated analysis for:
-
-1. **Open Order Percentage**: Calculate percentage of open and in-process orders
-2. **Aging Analysis**: Categorize orders by aging buckets (0-30, 31-60, 61-90, 90+ days)
-3. **Overdue Orders**: Identify orders with delivery dates before creation dates
-4. **Material Sales**: Top materials analysis with visualizations
 
 ##  Customization
 
-### Adding New Analysis Prompts
-Add new prompts to `prompt/prompt.py`:
-
-```python
-new_prompt = """
-You are a SQL data analyst.
-[Your analysis requirements here]
-"""
-```
-
-### Creating New Tools
-Extend the LLM capabilities by adding new tools in the `tools/` directory.
 
 ##  Output Files
 
