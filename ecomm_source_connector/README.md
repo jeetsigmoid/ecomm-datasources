@@ -15,30 +15,30 @@ This project combines SAP automation with AI-powered data analysis to create int
 ## 📁 Project Structure
 
 ```
-agentic-process-automation-sap/
-├── amazon_ads/
-│   ├── sap/           # SAP automation modules
-│   │   ├── sap.py     # SAP connection and login
-│   │   └── va05.py    # VA05 transaction automation
-│   ├── rpa/           # RPA orchestration
-│   │   └── rpa.py     # Main RPA workflow
-│   └── utils/         # Utility modules
-│       ├── blob_uploader.py  # Azure blob storage
-│       ├── Mailer.py         # Email functionality
-│       └── utils.py          # General utilities
-├── tools/             # LLM tools for data processing
-│   ├── generic_plot_tool.py      # Chart generation
-│   ├── pdf_report_tool.py        # PDF report creation
-│   └── pdf_report_tool_new.py    # Enhanced PDF reporting
-├── prompt/            # SQL analysis prompts
-│   └── prompt.py      # Predefined analysis queries
-├── output/            # Generated reports and data
-├── llm_tool_integration.py       # LLM with tool integration
-├── sql_lite_agent_v3.py          # SQL database agent
-├── requirements.txt               # Python dependencies
-└── README.md                     # This file
-```
-
+.
+└── ecomm_source_connector 
+    ├── amazon_ads
+    │   ├── __init__.py
+    │   ├── amazon_ads_main.py
+    │   └── chc_ecommerce_usa_amzon_ads_ecs.py
+    ├── amc
+    │   ├── __init__.py
+    │   ├── amc_main.py
+    │   └── chc_ecommerce_usa_amazon_amc_ecs.py
+    ├── avc
+    ├── config
+    │   └── amc_config
+    │       ├── campaign_LTV.yml
+    │       ├── config.yml
+    │       ├── overlap_ads.yml
+    │       ├── path_to_purchase.yml
+    │       └── sns.yml
+    ├── instacart
+    ├── MANIFEST.in
+    ├── README.md
+    ├── setup.py
+    └── walmart
+...
 ## 🛠️ Features
 
 ### 1. SAP Automation
