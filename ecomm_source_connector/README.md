@@ -1,86 +1,86 @@
-# SAP Agentic Process Automation POC
+# Ecommerce Connector Package 
 
-A comprehensive proof-of-concept project that demonstrates intelligent automation of SAP business processes using Large Language Models (LLMs) and RPA (Robotic Process Automation) techniques.
+A comprehensive package to fetch sales and Ads performance data for all ecommerce sources.i.e. Amazon, Walmart, Instacart and other retailers.
 
 ## 🚀 Overview
 
-This project combines SAP automation with AI-powered data analysis to create intelligent business process automation. It features:
+This project gives a ready-made framework to fetch sales data and Ads Performance data from multiple retailers. With a minimum changes, pipelines will be ready to integrate. It features:
 
-- **SAP Data Extraction**: Automated extraction of sales order data from SAP VA05 transaction
-- **LLM-Powered Analysis**: Intelligent data analysis using GPT-4 with custom tools
-- **Automated Reporting**: Generation of PDF reports with visualizations
-- **SQL Database Integration**: SQLite database for data storage and querying
-- **Azure Integration**: Blob storage and email capabilities
+- **Amazon Ads Data Extraction**: Automated extraction of sales order data from SAP VA05 transaction
+- **Amazon Marketing Central Extraction**: Intelligent data analysis using GPT-4 with custom tools
+- **Walmart Data Feeds Extraction**: Generation of PDF reports with visualizations
+- **Instacart Integration**: SQLite database for data storage and querying
+
 
 ## 📁 Project Structure
 
 ```
-.
-└── ecomm_source_connector 
-    ├── amazon_ads
-    │   ├── __init__.py
-    │   ├── amazon_ads_main.py
-    │   └── chc_ecommerce_usa_amzon_ads_ecs.py
-    ├── amc
-    │   ├── __init__.py
-    │   ├── amc_main.py
-    │   └── chc_ecommerce_usa_amazon_amc_ecs.py
-    ├── avc
-    ├── config
-    │   └── amc_config
-    │       ├── campaign_LTV.yml
-    │       ├── config.yml
-    │       ├── overlap_ads.yml
-    │       ├── path_to_purchase.yml
-    │       └── sns.yml
-    ├── instacart
+.└── ecomm_source_connector
+    ├── dist
+    │   ├── ecomm_source_connector-0.1.0-py3-none-any.whl
+    │   └── ecomm_source_connector-0.1.0.tar.gz
+    ├── ecomm_source_connector.egg-info
+    │   ├── dependency_links.txt
+    │   ├── PKG-INFO
+    │   ├── SOURCES.txt
+    │   └── top_level.txt
     ├── MANIFEST.in
     ├── README.md
+    ├── requirements.txt
     ├── setup.py
-    └── walmart
+    └── src
+        ├── amazon_ads
+        │   ├── __init__.py
+        │   ├── amazon_ads_main.py
+        │   ├── amc
+        │   │   ├── __init__.py
+        │   │   ├── amc_main.py
+        │   │   ├── avc
+        │   │   └── ecommerce_amazon_amc_ecs.py
+        │   └── ecommerce_amzon_ads_ecs.py
+        ├── config
+        │   └── amc_config
+        │       ├── campaign_LTV.yml
+        │       ├── config.yml
+        │       ├── overlap_ads.yml
+        │       ├── path_to_purchase.yml
+        │       └── sns.yml
+        ├── ecomm_source_connector.egg-info
+        │   ├── dependency_links.txt
+        │   ├── PKG-INFO
+        │   ├── SOURCES.txt
+        │   └── top_level.txt
+        ├── instacart
+        └── walmart
 ...
 ## 🛠️ Features
 
-### 1. SAP Automation
-- **Automated Login**: Secure SAP GUI automation with credential management
-- **VA05 Transaction**: Automated extraction of sales order data
-- **Data Export**: CSV export with configurable date ranges
+### 1. Integration of Retailers with Minimum Effort
+- With minimum changes in the credentials, code will be ready to pull the data
 
-### 2. Intelligent Data Analysis
-- **SQL Agent**: LLM-powered SQL query generation and execution
-- **Custom Analysis**: Predefined prompts for business metrics:
-  - Open/In-Process order percentages
-  - Aging bucket analysis
-  - Overdue order identification
+### 2. Ease of use
+- All the sources are modularized with zero dependencies on each other. Each module could be used separately.
 
-### 3. Visual Reporting
-- **Bar Charts**: Automated generation of material sales visualizations
-- **PDF Reports**: Comprehensive business reports with charts and metrics
-- **Data Export**: CSV outputs for further analysis
+### 3. Cloud Integration
+- Code can be easily leveraged to integrate with multiple platforms and containers.
 
-### 4. Cloud Integration
-- **Azure Blob Storage**: Automated file upload to cloud storage
-- **Email Notifications**: Automated report distribution via email
 
 ##  Prerequisites
 
-- Python 3.8+
-- SAP GUI installed and configured
-- SAP system access credentials
-- Azure storage account (optional)
-- OpenAI API key
+- Python 3.6+
+- installation of requirements.txt
 
 ##  Installation
 
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd agentic-process-automation-sap
+   cd ecomm_source_connector
    ```
 
 2. **Install dependencies**
    ```bash
-   pip install -r requirements.txt
+   pip install ecomm_source_connector
    ```
 
 3. **Configure environment variables**
@@ -93,7 +93,7 @@ This project combines SAP automation with AI-powered data analysis to create int
 
 ## 🚀 Usage
 
-### 1. SAP Data Extraction
+### 1. Amazon Ads Data Extraction
 Run the main RPA workflow to extract SAP data:
 
 ```bash

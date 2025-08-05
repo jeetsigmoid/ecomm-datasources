@@ -1,6 +1,6 @@
 import argparse
 import logging
-from amc.chc_ecommerce_usa_amazon_amc_ecs import AmazonMarketingCloudAPI
+from amc.ecommerce_amazon_amc_ecs import AmazonMarketingCloudAPI
 from utils.config_manager import load_configs
 from utils.common_utils import make_api_calls_daily
 from datetime import datetime

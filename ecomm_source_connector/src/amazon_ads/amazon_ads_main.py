@@ -1,6 +1,6 @@
 import argparse
 import logging
-from amazon_ads.chc_ecommerce_usa_amzon_ads_ecs import AmazonAdvertisingReportProcessor
+from amazon_ads.ecommerce_amzon_ads_ecs import AmazonAdvertisingReportProcessor
 from utils.config_manager import load_configs
 from utils.common_utils import generate_intervals
 from datetime import datetime 
