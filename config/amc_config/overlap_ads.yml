@@ -1,0 +1,262 @@
+name : "overlap_ads" 
+query : "WITH campaign_list AS (
+                SELECT 
+                advertiser, 
+                currency_iso_code, 
+                campaign, 
+                campaign_id_string, 
+                creative, 
+                ad_product_type 
+                FROM 
+                sponsored_ads_traffic 
+                GROUP BY 
+                advertiser, 
+                currency_iso_code, 
+                campaign, 
+                campaign_id_string, 
+                creative, 
+                ad_product_type
+                ), 
+                brand_campaign_lookup AS (
+                SELECT 
+                MAX(
+                CASE WHEN LOWER(advertiser) LIKE '%allegra%' THEN 'Allegra' WHEN LOWER(creative) LIKE '%allegra%' THEN 'Allegra' WHEN LOWER(campaign) LIKE '%allegra%' THEN 'Allegra' WHEN LOWER(advertiser) LIKE '%aspercreme%' THEN 'Aspercreme' WHEN LOWER(creative) LIKE '%aspercreme%' THEN 'Aspercreme' WHEN LOWER(campaign) LIKE '%aspercreme%' THEN 'Aspercreme' WHEN LOWER(advertiser) LIKE '%cortizone%' THEN 'Cortizone 10' WHEN LOWER(creative) LIKE '%cortizone%' THEN 'Cortizone 10' WHEN LOWER(campaign) LIKE '%cortizone%' THEN 'Cortizone 10' WHEN LOWER(advertiser) LIKE '%dulcolax%' THEN 'Dulcolax' WHEN LOWER(creative) LIKE '%dulcolax%' THEN 'Dulcolax' WHEN LOWER(campaign) LIKE '%dulcolax%' THEN 'Dulcolax' WHEN LOWER(advertiser) LIKE '%gold bond%' THEN 'Gold Bond' WHEN LOWER(creative) LIKE '%gold bond%' THEN 'Gold Bond' WHEN LOWER(campaign) LIKE '%gold bond%' THEN 'Gold Bond' WHEN LOWER(advertiser) LIKE '%icy hot%' THEN 'Icy Hot' WHEN LOWER(creative) LIKE '%icy hot%' THEN 'Icy Hot' WHEN LOWER(campaign) LIKE '%icy hot%' THEN 'Icy Hot' WHEN LOWER(advertiser) LIKE '%nasacort%' THEN 'Nasacort' WHEN LOWER(creative) LIKE '%nasacort%' THEN 'Nasacort' WHEN LOWER(campaign) LIKE '%nasacort%' THEN 'Nasacort' WHEN LOWER(advertiser) LIKE '%selsun blue%' THEN 'Selsun Blue' WHEN LOWER(creative) LIKE '%selsun blue%' THEN 'Selsun Blue' WHEN LOWER(campaign) LIKE '%selsun blue%' THEN 'Selsun Blue' WHEN LOWER(advertiser) LIKE '%unisom%' THEN 'Unisom' WHEN LOWER(creative) LIKE '%unisom%' THEN 'Unisom' WHEN LOWER(campaign) LIKE '%unisom%' THEN 'Unisom' WHEN LOWER(advertiser) LIKE '%xyzal%' THEN 'Xyzal' WHEN LOWER(creative) LIKE '%xyzal%' THEN 'Xyzal' WHEN LOWER(campaign) LIKE '%xyzal%' THEN 'Xyzal' WHEN LOWER(advertiser) LIKE '%zantac%' THEN 'Zantac' WHEN LOWER(creative) LIKE '%zantac%' THEN 'Zantac' WHEN LOWER(campaign) LIKE '%zantac%' THEN 'Zantac' WHEN LOWER(advertiser) LIKE '%pharmaton%' THEN 'Pharmaton' WHEN LOWER(creative) LIKE '%pharmaton%' THEN 'Pharmaton' WHEN LOWER(campaign) LIKE '%pharmaton%' THEN 'Pharmaton' WHEN LOWER(advertiser) LIKE '%initiv%' THEN 'Initiv' WHEN LOWER(creative) LIKE '%initiv%' THEN 'Initiv' WHEN LOWER(campaign) LIKE '%initiv%' THEN 'Initiv' WHEN LOWER(advertiser) LIKE '%dulcosoft%' THEN 'Dulcoease' WHEN LOWER(creative) LIKE '%dulcosoft%' THEN 'Dulcoease' WHEN LOWER(campaign) LIKE '%dulcosoft%' THEN 'Dulcoease' WHEN LOWER(advertiser) LIKE '%pton%' THEN 'PTON' WHEN LOWER(creative) LIKE '%pton%' THEN 'PTON' WHEN LOWER(campaign) LIKE '%pton%' THEN 'PTON' WHEN LOWER(advertiser) LIKE '%bisolherbal%' THEN 'Bisolherbal' WHEN LOWER(creative) LIKE '%bisolherbal%' THEN 'Bisolherbal' WHEN LOWER(campaign) LIKE '%bisolherbal%' THEN 'Bisolherbal' WHEN LOWER(advertiser) LIKE '%buscomint%' THEN 'Buscomint' WHEN LOWER(creative) LIKE '%buscomint%' THEN 'Buscomint' WHEN LOWER(campaign) LIKE '%buscomint%' THEN 'Buscomint' WHEN LOWER(advertiser) LIKE '%allevia%' THEN 'Allevia' WHEN LOWER(creative) LIKE '%allevia%' THEN 'Allevia' WHEN LOWER(campaign) LIKE '%allevia%' THEN 'Allevia' WHEN LOWER(advertiser) LIKE '%buscopan%' THEN 'Buscopan' WHEN LOWER(creative) LIKE '%buscopan%' THEN 'Buscopan' WHEN LOWER(campaign) LIKE '%buscopan%' THEN 'Buscopan' WHEN LOWER(advertiser) LIKE '%dulcoease%' THEN 'Dulcoease' WHEN LOWER(creative) LIKE '%dulcoease%' THEN 'Dulcoease' WHEN LOWER(campaign) LIKE '%dulcoease%' THEN 'Dulcoease' WHEN LOWER(advertiser) LIKE '%act%' THEN 'ACT' WHEN LOWER(creative) LIKE '%act%' THEN 'ACT' WHEN LOWER(campaign) LIKE '%act%' THEN 'ACT' ELSE 'UNCLASSIFIED' END
+                ) AS brand, 
+                advertiser, 
+                currency_iso_code, 
+                campaign, 
+                campaign_id_string, 
+                ad_product_type 
+                FROM 
+                campaign_list 
+                GROUP BY 
+                advertiser, 
+                currency_iso_code, 
+                campaign, 
+                campaign_id_string, 
+                ad_product_type
+                ), 
+                sa_data_01 AS (
+                SELECT 
+                bcl.brand, 
+                bcl.currency_iso_code, 
+                sat.campaign, 
+                CASE WHEN sat.ad_product_type = 'sponsored_products' THEN 'SP' WHEN sat.ad_product_type = 'sponsored_display' THEN 'SD' WHEN sat.ad_product_type = 'sponsored_brands' THEN 'SB' ELSE 'SA_other' END AS ad_product_type, 
+                sat.user_id, 
+                sat.campaign_id_string, 
+                SUM(spend/100000000) AS spend_sum, 
+                SUM(impressions) AS impressions_sum, 
+                SUM(clicks) AS clicks_sum 
+                FROM 
+                sponsored_ads_traffic sat 
+                INNER JOIN brand_campaign_lookup bcl ON sat.campaign_id_string = bcl.campaign_id_string 
+                WHERE 
+                user_id IS NOT NULL 
+                GROUP BY 
+                1, 
+                2, 
+                3, 
+                4, 
+                5, 
+                6
+                ), 
+                amazon_events_data_sa AS (
+                SELECT 
+                brand, 
+                currency_iso_code, 
+                aaett.campaign, 
+                user_id, 
+                aaett.campaign_id_string, 
+                SUM(detail_page_view) AS detail_page_view_sum, 
+                SUM(brand_halo_detail_page_view) AS brand_halo_detail_page_view_sum, 
+                SUM(total_detail_page_view) AS total_detail_page_view_sum, 
+                SUM(purchases) AS purchases_sum, 
+                SUM(brand_halo_purchases) AS brand_halo_purchases_sum, 
+                SUM(total_purchases) AS total_purchases_sum, 
+                SUM(product_sales) AS product_sales_sum, 
+                SUM(brand_halo_product_sales) AS brand_halo_product_sales_sum, 
+                SUM(total_product_sales) AS total_product_sales_sum, 
+                SUM(units_sold) AS units_sold_sum, 
+                SUM(brand_halo_units_sold) AS brand_halo_units_sold_sum, 
+                SUM(total_units_sold) AS total_units_sold_sum, 
+                SUM(new_to_brand_purchases) AS new_to_brand_purchases_sum, 
+                SUM(
+                new_to_brand_brand_halo_purchases
+                ) AS new_to_brand_brand_halo_purchases_sum, 
+                SUM(new_to_brand_total_purchases) AS new_to_brand_total_purchases_sum 
+                FROM 
+                amazon_attributed_events_by_traffic_time aaett 
+                INNER JOIN brand_campaign_lookup bcl ON aaett.campaign_id_string = bcl.campaign_id_string 
+                WHERE 
+                user_id IS NOT NULL 
+                AND aaett.ad_product_type IS NOT NULL 
+                GROUP BY 
+                1, 
+                2, 
+                3, 
+                4, 
+                5
+                ), 
+                sa_events AS (
+                SELECT 
+                sa01.brand, 
+                sa01.currency_iso_code, 
+                sa01.ad_product_type, 
+                sa01.user_id, 
+                SUM(spend_sum) AS spend_sum, 
+                SUM(impressions_sum) AS impressions_sum, 
+                SUM(clicks_sum) AS clicks_sum, 
+                SUM(detail_page_view_sum) AS detail_page_view_sum, 
+                SUM(
+                brand_halo_detail_page_view_sum
+                ) AS brand_halo_detail_page_view_sum, 
+                SUM(total_detail_page_view_sum) AS total_detail_page_view_sum, 
+                SUM(purchases_sum) AS purchases_sum, 
+                SUM(brand_halo_purchases_sum) AS brand_halo_purchases_sum, 
+                SUM(total_purchases_sum) AS total_purchases_sum, 
+                SUM(product_sales_sum) AS product_sales_sum, 
+                SUM(brand_halo_product_sales_sum) AS brand_halo_product_sales_sum, 
+                SUM(total_product_sales_sum) AS total_product_sales_sum, 
+                SUM(units_sold_sum) AS units_sold_sum, 
+                SUM(brand_halo_units_sold_sum) AS brand_halo_units_sold_sum, 
+                SUM(total_units_sold_sum) AS total_units_sold_sum, 
+                SUM(new_to_brand_purchases_sum) AS new_to_brand_purchases_sum, 
+                SUM(
+                new_to_brand_brand_halo_purchases_sum
+                ) AS new_to_brand_brand_halo_purchases_sum, 
+                SUM(
+                new_to_brand_total_purchases_sum
+                ) AS new_to_brand_total_purchases_sum 
+                FROM 
+                sa_data_01 sa01 
+                LEFT JOIN amazon_events_data_sa aes ON sa01.brand = aes.brand 
+                AND sa01.campaign_id_string = aes.campaign_id_string 
+                AND sa01.user_id = aes.user_id 
+                GROUP BY 
+                1, 
+                2, 
+                3, 
+                4
+                ), 
+                combined_dsp_sa AS (
+                SELECT 
+                brand, 
+                currency_iso_code, 
+                ad_product_type, 
+                user_id, 
+                0 AS total_cost, 
+                spend_sum, 
+                impressions_sum, 
+                clicks_sum, 
+                detail_page_view_sum, 
+                brand_halo_detail_page_view_sum, 
+                total_detail_page_view_sum, 
+                purchases_sum, 
+                brand_halo_purchases_sum, 
+                total_purchases_sum, 
+                product_sales_sum, 
+                brand_halo_product_sales_sum, 
+                total_product_sales_sum, 
+                units_sold_sum, 
+                brand_halo_units_sold_sum, 
+                total_units_sold_sum, 
+                new_to_brand_purchases_sum, 
+                new_to_brand_brand_halo_purchases_sum, 
+                new_to_brand_total_purchases_sum 
+                FROM 
+                sa_events
+                ), 
+                dsp_sa_aggregated AS (
+                SELECT 
+                brand, 
+                currency_iso_code, 
+                ad_product_type, 
+                user_id, 
+                (
+                SUM(spend_sum)
+                ) AS costs, 
+                SUM(impressions_sum) AS impressions_sum, 
+                SUM(clicks_sum) AS clicks_sum, 
+                SUM(detail_page_view_sum) AS detail_page_view_sum, 
+                SUM(
+                brand_halo_detail_page_view_sum
+                ) AS brand_halo_detail_page_view_sum, 
+                SUM(total_detail_page_view_sum) AS total_detail_page_view_sum, 
+                SUM(purchases_sum) AS purchases_sum, 
+                SUM(brand_halo_purchases_sum) AS brand_halo_purchases_sum, 
+                SUM(total_purchases_sum) AS total_purchases_sum, 
+                SUM(product_sales_sum) AS product_sales_sum, 
+                SUM(brand_halo_product_sales_sum) AS brand_halo_product_sales_sum, 
+                SUM(total_product_sales_sum) AS total_product_sales_sum, 
+                SUM(units_sold_sum) AS units_sold_sum, 
+                SUM(brand_halo_units_sold_sum) AS brand_halo_units_sold_sum, 
+                SUM(total_units_sold_sum) AS total_units_sold_sum, 
+                SUM(new_to_brand_purchases_sum) AS new_to_brand_purchases_sum, 
+                SUM(
+                new_to_brand_brand_halo_purchases_sum
+                ) AS new_to_brand_brand_halo_purchases_sum, 
+                SUM(
+                new_to_brand_total_purchases_sum
+                ) AS new_to_brand_total_purchases_sum 
+                FROM 
+                combined_dsp_sa 
+                GROUP BY 
+                1, 
+                2, 
+                3, 
+                4
+                ), 
+                overlap_brand_user AS (
+                SELECT 
+                brand, 
+                user_id, 
+                ARRAY_SORT(
+                COLLECT(DISTINCT ad_product_type)
+                ) AS ad_product_type_overlap 
+                FROM 
+                dsp_sa_aggregated 
+                GROUP BY 
+                1, 
+                2
+                ) 
+                SELECT 
+                BUILT_IN_PARAMETER('TIME_WINDOW_START') AS time_window_start, 
+                BUILT_IN_PARAMETER('TIME_WINDOW_END') AS time_window_end, 
+                dspsaagg.brand, 
+                currency_iso_code, 
+                ad_product_type_overlap, 
+                SUM(costs) AS costs, 
+                SUM(impressions_sum) AS impressions_sum, 
+                COUNT(DISTINCT dspsaagg.user_id) AS reach, 
+                SUM(clicks_sum) AS clicks_sum, 
+                SUM(detail_page_view_sum) AS detail_page_view_sum, 
+                SUM(
+                brand_halo_detail_page_view_sum
+                ) AS brand_halo_detail_page_view_sum, 
+                SUM(total_detail_page_view_sum) AS total_detail_page_view_sum, 
+                SUM(purchases_sum) AS purchases_sum, 
+                SUM(brand_halo_purchases_sum) AS brand_halo_purchases_sum, 
+                SUM(total_purchases_sum) AS total_purchases_sum, 
+                SUM(product_sales_sum) AS product_sales_sum, 
+                SUM(brand_halo_product_sales_sum) AS brand_halo_product_sales_sum, 
+                SUM(total_product_sales_sum) AS total_product_sales_sum, 
+                SUM(units_sold_sum) AS units_sold_sum, 
+                SUM(brand_halo_units_sold_sum) AS brand_halo_units_sold_sum, 
+                SUM(total_units_sold_sum) AS total_units_sold_sum, 
+                SUM(new_to_brand_purchases_sum) AS new_to_brand_purchases_sum, 
+                SUM(
+                new_to_brand_brand_halo_purchases_sum
+                ) AS new_to_brand_brand_halo_purchases_sum, 
+                SUM(
+                new_to_brand_total_purchases_sum
+                ) AS new_to_brand_total_purchases_sum 
+                FROM 
+                dsp_sa_aggregated dspsaagg 
+                JOIN overlap_brand_user obu ON dspsaagg.user_id = obu.user_id 
+                AND dspsaagg.brand = obu.brand 
+                GROUP BY 
+                1, 
+                2, 
+                3, 
+                4,
+                5 "

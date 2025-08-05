@@ -1,0 +1,2 @@
+name : "sns" 
+query : "select tracked_item, event_date_utc,  event_subtype, purchase_currency, sum(total_product_sales) as subscription_product_sales, SUM(total_units_sold) as qty_subscription from conversions_all WHERE event_subtype in ('snsSubscription','firstSnSOrder','repeatSnSOrder') GROUP BY 1,2,3,4"

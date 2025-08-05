@@ -1,1 +1,1 @@
-# ecomm-datasources
+# ecomm-data-sources-connectors
