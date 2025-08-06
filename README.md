@@ -6,10 +6,10 @@ A comprehensive package to fetch sales and Ads performance data for all ecommerc
 
 This project gives a ready-made framework to fetch sales data and Ads Performance data from multiple retailers. With a minimum changes, pipelines will be ready to integrate. It features:
 
-- **Amazon Ads Data Extraction**: Automated extraction of sales order data from SAP VA05 transaction
-- **Amazon Marketing Central Extraction**: Intelligent data analysis using GPT-4 with custom tools
-- **Walmart Data Feeds Extraction**: Generation of PDF reports with visualizations
-- **Instacart Integration**: SQLite database for data storage and querying
+- **Amazon Ads Data Extraction**: Extraction of Amazon Ads report type API.
+- **Amazon Marketing Central Extraction**: Designed to run AMC queries and data extraction.
+- **Walmart Data Feeds Extraction**: Walmart Omni Sales data ingestion process.
+- **Instacart Integration**: Instacart Data Ingestion process.
 
 
 ## 📁 Project Structure
@@ -30,8 +30,9 @@ This project gives a ready-made framework to fetch sales data and Ads Performanc
 │   ├── setup.py
 │   └── src
 │       ├── ecomm
-│       │   ├── avc
 │       │   ├── config
+│       │   │   ├── instacart_config
+│       │   │   │   └── config.yml
 │       │   │   └── walmart_config
 │       │   │       ├── config.yml
 │       │   │       ├── item_attributes.yml
@@ -40,6 +41,9 @@ This project gives a ready-made framework to fetch sales data and Ads Performanc
 │       │   │       ├── product_dimensions.yml
 │       │   │       └── store_dimensions.yml
 │       │   ├── instacart
+│       │   │   ├── __init__.py
+│       │   │   ├── chc_ecommerce_instacart_ecs.py
+│       │   │   └── instacart_main.py
 │       │   └── walmart
 │       │       ├── __init__.py
 │       │       ├── chc_ecommerce_walmart_ecs.py
@@ -86,6 +90,8 @@ This project gives a ready-made framework to fetch sales data and Ads Performanc
 │           ├── config_manager.py
 │           └── report_processor.py
 └── README.md
+
+```
 ...
 ## 🛠️ Features
 
@@ -110,19 +116,17 @@ This project gives a ready-made framework to fetch sales data and Ads Performanc
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd ecomm_source_connector
-   ```
-2. **Setup Git Parameters**
-   ```bash
+   cd connectors/dist
    ```
 
-3. **Install dependencies**
+2. **Install whl file**
    ```bash
    pip install ecomm_source_connector-0.1.0-py3-none-any.whl
    ```
 
 
 ## 🚀 Usage
+This accelrator can be used for both Media and Sales 
 
 ### 1. Amazon Ads Data Extraction
 Run the amazon_ads_main.py to extract amazon ads related reports:
@@ -173,7 +177,7 @@ python3 -m src.amc.amc_main \
 ```
 
 ##  Output Files
-
+Output will be generated in the mentioned bucket in CSV format.
 
 
 

@@ -1,0 +1,33 @@
+destination_output_path: "de/{report_type}/{country_code}/{report_type}_{day}{month}{year}.csv"
+
+instacart_sights:
+      timespan: "day"
+      dimensions:
+        - "entity_brand_name"
+        - "department"
+        - "classified_code"
+        - "super_category"
+        - "category"
+        - "sub_category"
+      metrics:
+        - "dollar_volume"
+        - "units"
+        - "dollar_volume_yago"
+        - "units_yago"
+        - "dollar_volume_yago_change"
+        - "units_yago_change"
+        - "dollar_volume_share"
+        
+country_code:
+  US:
+    api_urls:
+      report_url: "https://api.ads.instacart.com/api/v2/reports/insights"
+
+      access_token_generation: "https://api.ads.instacart.com/oauth/token"
+
+    headers:
+      accept: "application/json"
+      content_type: "application/json"
+
+    key: "instacart"
+    destination_output_path: "de/{report_type}/{country_code}/{report_type}_{day}{month}{year}.csv"
