@@ -105,27 +105,53 @@ This project gives a ready-made framework to fetch sales data and Ads Performanc
 Run the amazon_ads_main.py to extract amazon ads related reports:
 
 ```bash
-python src/amazon_ads/amazon_ads_main.py
+python3 -m src.amazon_ads.amazon_ads_main \
+  --report_type 'your_report_type' \
+  --start_date 'YYYY-MM-DD' \
+  --end_date 'YYYY-MM-DD' \
+  --country_code 'US' \
+  --client_id 'your_client_id' \
+  --client_secret 'your_client_secret' \
+  --refresh_token 'your_refresh_token' \
+  --config_path config/amazon_ads/config.yml \
+  --bucket_nm your_bucket_name
 ```
 
 ### 2. AMC Data Extraction
 Run the amazon_ads_main.py to extract amazon ads related reports:
 
 ```bash
-python src/amc/amc_main.py
+python3 -m src.amc.amc_main \
+  --report_type 'your_report_type' \
+  --start_date 'YYYY-MM-DD' \
+  --end_date 'YYYY-MM-DD' \
+  --country_code 'US' \
+  --client_id 'your_client_id' \
+  --client_secret 'your_client_secret' \
+  --refresh_token 'your_refresh_token' \
+  --config_path config/amc_config/config.yml \
+  --bucket_nm your_bucket_name
 ```
 
-##  Customization
+##  Parameters List
+```
+| Argument          | Description                            | Example                        |
+| ----------------- | -------------------------------------- | ------------------------------ |
+| `--report_type`   | Type of report to generate             | `summary`, `daily`             |
+| `--start_date`    | Start date for the report (YYYY-MM-DD) | `2025-08-01`                   |
+| `--end_date`      | End date for the report (YYYY-MM-DD)   | `2025-08-05`                   |
+| `--country_code`  | Country code in uppercase              | `US`                           |
+| `--client_id`     | OAuth2 client ID                       | `your_client_id`               |
+| `--client_secret` | OAuth2 client secret                   | `your_client_secret`           |
+| `--refresh_token` | OAuth2 refresh token                   | `your_refresh_token`           |
+| `--config_path`   | Path to the config YAML file           | `config/amc_config/config.yml` |
+| `--bucket_nm`     | Name of the target cloud bucket        | `my-bucket`                    |
 
+```
 
 ##  Output Files
 
-The system generates:
-- `output/open_inprocess_percentage.csv` - Open order percentages
-- `output/open_inprocess_aging.csv` - Aging analysis
-- `output/overdue_open_orders.csv` - Overdue orders
-- `summary_report.pdf` - Comprehensive business report
-- `material_sold_units_report_Total Sold Units_barplot.png` - Sales visualization
+
 
 
 
