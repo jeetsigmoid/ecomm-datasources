@@ -1,5 +1,4 @@
 MANIFEST.in
-README.md
 setup.py
 src/ecomm_source_connector.egg-info/PKG-INFO
 src/ecomm_source_connector.egg-info/SOURCES.txt
