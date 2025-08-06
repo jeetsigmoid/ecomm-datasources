@@ -7,7 +7,7 @@ A comprehensive package to fetch sales and Ads performance data for all ecommerc
 This project gives a ready-made framework to fetch sales data and Ads Performance data from multiple retailers. With a minimum changes, pipelines will be ready to integrate. It features:
 
 - **Amazon Ads Data Extraction**: Extraction of Amazon Ads report type API.
-- **Amazon Marketing Central Extraction**: Designed to run AMC queries and data extraction.
+- **Amazon Marketing Cloud Extraction**: Designed to run AMC queries and data extraction.
 - **Walmart Data Feeds Extraction**: Walmart Omni Sales data ingestion process.
 - **Instacart Integration**: Instacart Data Ingestion process.
 
