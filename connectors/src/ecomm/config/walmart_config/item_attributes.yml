@@ -1,0 +1,3 @@
+country_code:
+  US:
+    url: "https://developer.api.us.walmart.com/api-proxy/service/channelperformance/feeds/v2/bulkfeeds/snapshot/itemattributes"

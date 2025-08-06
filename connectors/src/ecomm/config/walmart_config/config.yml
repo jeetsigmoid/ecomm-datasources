@@ -1,0 +1,10 @@
+destination_output_path: "de/walmart/{country_code}/{report_type}/{report_type}_{day}{month}{year}.csv"
+content_type: "application/json"
+
+# Usage in report_configs
+report_configs:
+  omni_sales: "omni_sales.yml"
+  omni_sales_new: "omni_sales_new.yml"
+  item_attributes: "item_attributes.yml"
+  product_dimensions: "product_dimensions.yml"
+  store_dimensions: "store_dimensions.yml"

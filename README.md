@@ -15,48 +15,77 @@ This project gives a ready-made framework to fetch sales data and Ads Performanc
 ## 📁 Project Structure
 
 ```
-└── ecomm_source_connector
-    ├── dist
-    │   ├── ecomm_source_connector-0.1.0-py3-none-any.whl
-    │   └── ecomm_source_connector-0.1.0.tar.gz
-    ├── ecomm_source_connector.egg-info
-    │   ├── dependency_links.txt
-    │   ├── PKG-INFO
-    │   ├── SOURCES.txt
-    │   └── top_level.txt
-    ├── MANIFEST.in
-    ├── README.md
-    ├── requirements.txt
-    ├── setup.py
-    └── src
-        ├── amazon_ads
-        │   ├── __init__.py
-        │   ├── amazon_ads_main.py
-        │   └── ecommerce_amzon_ads_ecs.py
-        ├── amc
-        │   ├── __init__.py
-        │   ├── amc_main.py
-        │   └── ecommerce_amazon_amc_ecs.py
-        ├── avc
-        ├── config
-        │   └── amc_config
-        │       ├── campaign_LTV.yml
-        │       ├── config.yml
-        │       ├── overlap_ads.yml
-        │       ├── path_to_purchase.yml
-        │       └── sns.yml
-        ├── ecomm_source_connector.egg-info
-        │   ├── dependency_links.txt
-        │   ├── PKG-INFO
-        │   ├── SOURCES.txt
-        │   └── top_level.txt
-        ├── instacart
-        ├── utils
-        │   ├── __init__.py
-        │   ├── common_utils.py
-        │   ├── config_manager.py
-        │   └── report_processor.py
-        └── walmart
+├── connectors
+│   ├── dist
+│   │   ├── ecomm_source_connector-0.1.0-py3-none-any.whl
+│   │   └── ecomm_source_connector-0.1.0.tar.gz
+│   ├── ecomm_source_connector.egg-info
+│   │   ├── dependency_links.txt
+│   │   ├── PKG-INFO
+│   │   ├── SOURCES.txt
+│   │   └── top_level.txt
+│   ├── MANIFEST.in
+│   ├── README copy.md
+│   ├── requirements.txt
+│   ├── setup.py
+│   └── src
+│       ├── ecomm
+│       │   ├── avc
+│       │   ├── config
+│       │   │   └── walmart_config
+│       │   │       ├── config.yml
+│       │   │       ├── item_attributes.yml
+│       │   │       ├── omni_sales_new.yml
+│       │   │       ├── omni_sales.yml
+│       │   │       ├── product_dimensions.yml
+│       │   │       └── store_dimensions.yml
+│       │   ├── instacart
+│       │   └── walmart
+│       │       ├── __init__.py
+│       │       ├── chc_ecommerce_walmart_ecs.py
+│       │       └── walmart_main.py
+│       ├── ecomm_source_connector.egg-info
+│       │   ├── dependency_links.txt
+│       │   ├── PKG-INFO
+│       │   ├── SOURCES.txt
+│       │   └── top_level.txt
+│       ├── media
+│       │   ├── amazon_ads
+│       │   │   ├── __init__.py
+│       │   │   ├── amazon_ads_main.py
+│       │   │   └── ecommerce_amzon_ads_ecs.py
+│       │   ├── amc
+│       │   │   ├── __init__.py
+│       │   │   ├── amc_main.py
+│       │   │   └── ecommerce_amazon_amc_ecs.py
+│       │   └── config
+│       │       ├── amazon_ads_config
+│       │       │   ├── config.yml
+│       │       │   ├── sbAdGroup.yml
+│       │       │   ├── sbAds.yml
+│       │       │   ├── sbCampaigns.yml
+│       │       │   ├── sbPlacement.yml
+│       │       │   ├── sbPurchasedProduct.yml
+│       │       │   ├── sbTargeting.yml
+│       │       │   ├── sdAdvertisedProduct.yml
+│       │       │   ├── sdCampaigns.yml
+│       │       │   ├── sdTargeting.yml
+│       │       │   ├── spAdvertisedProduct.yml
+│       │       │   ├── spCampaigns.yml
+│       │       │   ├── spPurchasedProduct.yml
+│       │       │   └── spTargeting.yml
+│       │       └── amc_config
+│       │           ├── campaign_LTV.yml
+│       │           ├── config.yml
+│       │           ├── overlap_ads.yml
+│       │           ├── path_to_purchase.yml
+│       │           └── sns.yml
+│       └── utils
+│           ├── __init__.py
+│           ├── common_utils.py
+│           ├── config_manager.py
+│           └── report_processor.py
+└── README.md
 ...
 ## 🛠️ Features
 
@@ -74,6 +103,7 @@ This project gives a ready-made framework to fetch sales data and Ads Performanc
 
 - Python 3.6+
 - installation of requirements.txt
+- AWS IAM role needs to be configured(Bucket Access, ECS Access)
 
 ##  Installation
 
@@ -90,13 +120,6 @@ This project gives a ready-made framework to fetch sales data and Ads Performanc
    ```bash
    pip install ecomm_source_connector-0.1.0-py3-none-any.whl
    ```
-
-3. **Configure environment variables**
-   ```bash
-   export OPENAI_API_KEY="your-openai-api-key"
-   ```
-
-##  Configuration
 
 
 ## 🚀 Usage

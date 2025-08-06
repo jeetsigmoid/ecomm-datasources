@@ -1,0 +1,37 @@
+country_code:
+  US:
+    api_urls:
+      report_url: "https://advertising-api.amazon.com/reporting/reports"
+      profile_fetch: "https://advertising-api.amazon.com/v2/profiles"
+      access_token_generation: "https://api.amazon.com/auth/o2/token"
+
+  ES:
+    api_urls:
+      report_url: "https://advertising-api-eu.amazon.com/reporting/reports"
+      profile_fetch: "https://advertising-api-eu.amazon.com/v2/profiles"
+      access_token_generation: "https://api.amazon.co.uk/auth/o2/token"
+
+  GB:
+    api_urls:
+      report_url: "https://advertising-api-eu.amazon.com/reporting/reports"
+      profile_fetch: "https://advertising-api-eu.amazon.com/v2/profiles"
+      access_token_generation: "https://api.amazon.co.uk/auth/o2/token"
+
+content_type: "application/vnd.createasyncreportrequest.v3+json"
+
+destination_output_path: "de/amazon_ads/{country_code}/{report_type}/{report_type}_{day}{month}{year}.csv"
+
+fetcher_parameters:
+  sb_campaign: "sbCampaigns.yml"
+  sp_campaign: "spCampaigns.yml"
+  sd_campaign: "sdCampaigns.yml"
+  sp_advertised_product: "spAdvertisedProduct.yml"
+  sd_advertised_product: "sdAdvertisedProduct.yml"
+  sp_purchased_product: "spPurchasedProduct.yml"
+  sb_purchased_product: "sbPurchasedProduct.yml"
+  sb_ads: "sbAds.yml"
+  sb_ad_group: "sbAdGroup.yml"
+  sp_targeting: "spTargeting.yml"
+  sb_placement: "sbPlacement.yml"
+  sb_targeting: "sbTargeting.yml"
+  sd_targeting: "sdTargeting.yml"
