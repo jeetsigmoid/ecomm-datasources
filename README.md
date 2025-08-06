@@ -15,6 +15,7 @@ This project gives a ready-made framework to fetch sales data and Ads Performanc
 ## 📁 Project Structure
 
 ```
+
 ├── connectors
 │   ├── dist
 │   │   ├── ecomm_source_connector-0.1.0-py3-none-any.whl
@@ -25,7 +26,6 @@ This project gives a ready-made framework to fetch sales data and Ads Performanc
 │   │   ├── SOURCES.txt
 │   │   └── top_level.txt
 │   ├── MANIFEST.in
-│   ├── README copy.md
 │   ├── requirements.txt
 │   ├── setup.py
 │   └── src
@@ -94,6 +94,7 @@ This project gives a ready-made framework to fetch sales data and Ads Performanc
 ```
 ...
 ## 🛠️ Features
+The project is divided into two separate streams. ECOMM folder has the codes for Sources related to Sales. Such as Walmart, Instacart. Whereas, Media contains Ads Performance related codes.,
 
 ### 1. Integration of Retailers with Minimum Effort
 - With minimum changes in the credentials, code will be ready to pull the data
@@ -123,7 +124,8 @@ This project gives a ready-made framework to fetch sales data and Ads Performanc
    ```bash
    pip install ecomm_source_connector-0.1.0-py3-none-any.whl
    ```
-
+3. **Parameter Installation**
+  Currently the codes are designed to run along with the parameters. No addtional steps are needed. In actual scenario, all the parameters needs to be setup in the environment for data security.
 
 ## 🚀 Usage
 This accelrator can be used for both Media and Sales 
@@ -178,8 +180,6 @@ python3 -m src.amc.amc_main \
 
 ##  Output Files
 Output will be generated in the mentioned bucket in CSV format.
-
-
 
 
 ## Contributing
