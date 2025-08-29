@@ -1,0 +1,13 @@
+csv_column_names: [
+        "ASIN",
+        "COUNTRY_CODE",
+        "ENDDATE",
+        "LAST_UPDATED_TIMESTAMP",
+        "NETPUREPRODUCTMARGIN",
+        "STARTDATE"
+    ]
+create_report_option:
+  data_by_asin_key: netPureProductMarginByAsin
+  reportType: GET_VENDOR_NET_PURE_PRODUCT_MARGIN_REPORT
+  reportOptions:
+    reportPeriod: DAY
