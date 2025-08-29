@@ -1,0 +1,17 @@
+csv_column_names: [
+        "ASIN",
+        "COUNTRY_CODE",
+        "ENDDATE",
+        "FORECASTGENERATIONDATE",
+        "LAST_UPDATED_TIMESTAMP",
+        "MEANFORECASTUNITS",
+        "P70FORECASTUNITS",
+        "P80FORECASTUNITS",
+        "P90FORECASTUNITS",
+        "STARTDATE"
+    ]
+create_report_option:
+  data_by_asin_key: forecastByAsin
+  reportType: GET_VENDOR_FORECASTING_REPORT
+  reportOptions:
+    sellingProgram: RETAIL
