@@ -1,0 +1,18 @@
+csv_column_names: [
+        "ASIN",
+        "COUNTRY_CODE",
+        "ENDDATE",
+        "LAST_UPDATED_TIMESTAMP",
+        "ORDERS",
+        "REPEATCUSTOMERSPCTTOTAL",
+        "REPEATPURCHASEREVENUE",
+        "REPEATPURCHASEREVENUEPCTTOTAL",
+        "REPEATPURCHASEREVENUE_CURRENCYCODE",
+        "STARTDATE",
+        "UNIQUECUSTOMERS"
+    ]
+create_report_option:
+  data_by_asin_key: dataByAsin
+  reportType: GET_BRAND_ANALYTICS_REPEAT_PURCHASE_REPORT
+  reportOptions:
+    reportPeriod: WEEK
