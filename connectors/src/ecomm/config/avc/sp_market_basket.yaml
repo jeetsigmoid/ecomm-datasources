@@ -1,0 +1,15 @@
+csv_column_names: [
+        "ASIN",
+        "COMBINATIONPCT",
+        "COUNTRY_CODE",
+        "ENDDATE",
+        "LAST_UPDATED_TIMESTAMP",
+        "PURCHASEDWITHASIN",
+        "PURCHASEDWITHRANK",
+        "STARTDATE"
+    ]
+create_report_option:
+  data_by_asin_key: dataByAsin
+  reportType: GET_BRAND_ANALYTICS_MARKET_BASKET_REPORT
+  reportOptions:
+    reportPeriod: DAY
