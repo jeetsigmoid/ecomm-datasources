@@ -1,0 +1,23 @@
+csv_column_names: [
+        "ASIN",
+        "COUNTRY_CODE",
+        "CUSTOMERRETURNS",
+        "ENDDATE",
+        "LAST_UPDATED_TIMESTAMP",
+        "ORDEREDREVENUE",
+        "ORDEREDREVENUE_CURRENCYCODE",
+        "ORDEREDUNITS",
+        "SHIPPEDCOGS",
+        "SHIPPEDCOGS_CURRENCYCODE",
+        "SHIPPEDREVENUE",
+        "SHIPPEDREVENUE_CURRENCYCODE",
+        "SHIPPEDUNITS",
+        "STARTDATE"
+    ]
+create_report_option:
+  data_by_asin_key: salesByAsin
+  reportType: GET_VENDOR_SALES_REPORT
+  reportOptions:
+    reportPeriod: DAY
+    sellingProgram: RETAIL
+    distributorView: MANUFACTURING
