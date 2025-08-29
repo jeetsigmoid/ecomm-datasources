@@ -1,0 +1,13 @@
+csv_column_names: [
+        "ASIN",
+        "COUNTRY_CODE",
+        "ENDDATE",
+        "GLANCEVIEWS",
+        "LAST_UPDATED_TIMESTAMP",
+        "STARTDATE"
+    ]
+create_report_option:
+  data_by_asin_key: trafficByAsin
+  reportType: GET_VENDOR_TRAFFIC_REPORT
+  reportOptions:
+    reportPeriod: DAY
