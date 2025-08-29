@@ -1,0 +1,32 @@
+csv_column_names: [
+        "AMOUNTSPENT",
+        "AMOUNTSPENTCURRENCYCODE",
+        "ASIN",
+        "COUNTRY_CODE",
+        "CREATEDDATETIME",
+        "ENDDATETIME",
+        "FUNDINGAGREEMENTID",
+        "GLANCEVIEWS",
+        "LASTUPDATEDDATETIME",
+        "LAST_UPDATED_TIMESTAMP",
+        "MARKETPLACEID",
+        "PRODUCTAMOUNTSPENT",
+        "PRODUCTAMOUNTSPENTCURRENCYCODE",
+        "PRODUCTGLANCEVIEWS",
+        "PRODUCTNAME",
+        "PRODUCTREVENUE",
+        "PRODUCTREVENUECURRENCYCODE",
+        "PRODUCTUNITSSOLD",
+        "PROMOTIONID",
+        "PROMOTIONNAME",
+        "REVENUE",
+        "REVENUECURRENCYCODE",
+        "STARTDATETIME",
+        "STATUS",
+        "TYPE",
+        "UNITSSOLD",
+        "VENDORCODE"
+    ]
+create_report_option:
+  data_by_asin_key: promotions
+  reportType: GET_PROMOTION_PERFORMANCE_REPORT
