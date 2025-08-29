@@ -1,0 +1,33 @@
+csv_column_names: [
+        "CLICKEDASIN",
+        "CLICKEDITEMNAME",
+        "CLICKSHARE",
+        "CLICKSHARERANK",
+        "CONVERSIONSHARE",
+        "COUNTRY_CODE",
+        "DEPARTMENTNAME",
+        "ENDDATE",
+        "LAST_UPDATED_TIMESTAMP",
+        "SEARCHFREQUENCYRANK",
+        "SEARCHTERM",
+        "STARTDATE"
+    ]
+jq_csv_column_names: [
+        'departmentName',
+        'searchTerm', 
+        'searchFrequencyRank', 
+        'clickedAsin', 
+        'clickedItemName', 
+        'clickShareRank',
+        'clickShare', 
+        'conversionShare'
+    ]
+jq_command: "| jq -r '.dataByDepartmentAndSearchTerm[] | [.departmentName, .searchTerm, .searchFrequencyRank, .clickedAsin, .clickedItemName, .clickShareRank, .clickShare, .conversionShare] | @csv' >>"
+create_report_option:
+  data_by_asin_key: "dataByDepartmentAndSearchTerm"
+  reportType: "GET_BRAND_ANALYTICS_SEARCH_TERMS_REPORT"
+  reportOptions:
+    reportPeriod: "DAY"
+catalog_details:
+  sfSchema: "PSA_AMZN_VNDR_CNTRL"
+  dbtable: "PSA_CATALOG"
