@@ -20,3 +20,16 @@ include config/amazon_ads_config/spPurchasedProduct.yml
 include config/amazon_ads_config/spTargeting.yml 
 include config/amazon_ads_config/sbTargeting.yml 
 include config/amazon_ads_config/sbPlacement.yml
+include config/avc/common_config.yaml
+include config/avc/hero_mapping.yaml
+include config/avc/sp_catalog.yaml
+include config/avc/sp_coupon_performance.yaml
+include config/avc/sp_inventory.yaml
+include config/avc/sp_inventory_weekly.yaml
+include config/avc/sp_market_basket.yaml
+include config/avc/sp_net_ppm.yaml
+include config/avc/sp_promotion_performance.yaml
+include config/avc/sp_repeat_purchase.yaml
+include config/avc/sp_sales.yaml
+include config/avc/sp_search_terms.yaml
+include config/avc/sp_traffic.yaml
