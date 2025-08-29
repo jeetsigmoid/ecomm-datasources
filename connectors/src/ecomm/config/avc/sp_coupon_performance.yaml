@@ -1,0 +1,37 @@
+csv_column_names: [
+        "ASIN",
+        "BUDGET",
+        "BUDGETPERCENTAGEUSED",
+        "BUDGETREMAINING",
+        "BUDGETSPENT",
+        "BUDGETTYPE",
+        "CAMPAIGNID",
+        "CAMPAIGNNAME",
+        "CLIPS",
+        "COUNTRY_CODE",
+        "COUPONID",
+        "CREATIONDATETIME",
+        "CURRENCYCODE",
+        "DISCOUNTAMOUNT",
+        "DISCOUNTTYPE",
+        "ENDDATETIME",
+        "ISONCEPERCUSTOMER",
+        "ISSUBSCRIBEANDSAVE",
+        "LASTUPDATEDDATETIME",
+        "LAST_UPDATED_TIMESTAMP",
+        "MARKETPLACEID",
+        "NAME",
+        "REDEMPTIONS",
+        "STARTDATETIME",
+        "TOTALBUDGET",
+        "TOTALBUDGETREMAINING",
+        "TOTALBUDGETSPENT",
+        "TOTALCLIPS",
+        "TOTALDISCOUNT",
+        "TOTALREDEMPTIONS",
+        "VENDORCODE",
+        "WEBSITEMESSAGE"
+    ]
+create_report_option:
+  data_by_asin_key: campaigns
+  reportType: GET_COUPON_PERFORMANCE_REPORT
