@@ -1,0 +1,31 @@
+access_token_endpoint: "https://api.amazon.com/auth/o2/token"
+create_report_path: "/reports/2021-06-30/reports"
+get_report_path: "/reports/2021-06-30/reports/"
+download_report_path: "/reports/2021-06-30/documents/"
+lookback_days_not_available_assumption:
+  DAY: 2
+lookback_limit_in_days:
+  DAY: 15
+  WEEK: 49
+error_to_be_skipped: "Error in report request: The values for dataStartTime and dataEndTime provided in the createReport request describe a prohibited date range that does not align with the requirements for the specified reportPeriod. An example of a prohibited date range includes a dataStartTime that is not a Sunday or a dataEndTime that is not a Saturday when reportPeriod=WEEK. dataStartTime and dataEndTime must also abide by the maximum lookback window and reporting period limits that vary by reportPeriod. Reference the documentation on GitHub for this report type for more information."
+error_message_to_be_handle: "Error in report request: The report data for the requested date range is not yet available. Try submitting this createReport request at a later time, or modify dataEndTime to be an earlier date."
+market_basket_report_error_message: "Data is not available for the specified end date. Please specify an end date on or before"
+repeat_purchase_report_error_message: "Data is not available for the specified end date. Please specify an end date on or before"
+report_error_message_2: "A client error occurred. Please double check that your parameters are valid and fulfill the requirements of the report type."
+market_basket_report_type: "GET_BRAND_ANALYTICS_MARKET_BASKET_REPORT"
+forecast_report_type: "GET_VENDOR_FORECASTING_REPORT"
+# forecast_error_message : "This report does not support specifying a specific date range. Please review the document for this report type on Github, remove dataStartTime from your request, and try again."
+report_service: "execute-api"
+country_code: null
+report_type: null
+lookback_period_type: null
+lookback_period: null
+large_json_tables: ['sp_search_terms']
+catalog_api_endpoint: '{base_url}/catalog/2022-04-01/items?identifiers={identifier_list}&identifiersType=ASIN&marketplaceIds={marketplaceIds}&includedData=vendorDetails%2Csummaries&pageSize=20'
+table_list: ['PSA_INVENTORY','PSA_SALES','PSA_TRAFFIC','PSA_NET_PPM','PSA_MARKET_BASKET','PSA_REPEAT_PURCHASE']
+table_list_backfilling: ['SP_INVENTORY','SP_SALES','SP_TRAFFIC','SP_NET_PPM','SP_MARKET_BASKET','SP_REPEAT_PURCHASE']
+lookback_period_coupon_and_promotion_performance: "729"
+search_terms_report_error_message: "Data is not available for the specified end date."
+error_details: "A client error occurred."
+hero_schema_names: ['STG_AMZN_VNDR_CNTRL','PSA_AMZN_VNDR_CNTRL','DWH_ECOMMERCE']
+kpi_schema_names: ['STG_AMZN_VNDR_CNTRL','DWH_ECOMMERCE']
