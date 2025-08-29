@@ -1,0 +1,28 @@
+csv_column_names: [
+  'COUNTRY_CODE',
+  'CATEGORY', 
+  'ASIN', 
+  'UPC',
+  'EAN',
+  'BRAND',
+  'PRODUCT_TITLE',
+  'SHIPPED_COGS',
+  'SUB-BRAND',
+  'GMID',
+  'LMID',
+  'AVAILABILITY', 
+  'HERO',
+  ]
+jp_brands_translation:
+  ハイチオール: Hythiol
+  スルーラック: Surulac
+  アレジオン: Alesion
+  イブ(EVE): EVE
+  ドリエル: Drewell
+  アネロン: Aneron
+  ブロン(BRON): Bron
+  エスタック: S-Tac
+  ガストール: Gastol
+  エスエス製薬: Others
+  エスカップ: S-Cup
+  ラカルト: Medicated Lacalut New - 5
